@@ -1,6 +1,8 @@
 import requests
 import fake_useragent
 from bs4 import BeautifulSoup as BS
+import colorama
+import pyfiglet
 
 def convert_to_str(li: list) -> str:
     string = ""
@@ -45,13 +47,20 @@ def parse_links(prompt: str, count: int) -> list:
     return links
 
 if __name__ == "__main__":
-    prompt = input("Your prompt (example: \"red flower\"): ")
+    print(colorama.Fore.LIGHTYELLOW_EX)
+    pyfiglet.print_figlet("CONSOLE BROWSING")
+    print(colorama.Fore.LIGHTCYAN_EX)
+    pyfiglet.print_figlet("Prompt: ")
+    prompt = input()
     try:
-        count = int(input("Max links (number): "))
+        print(colorama.Fore.RED)
+        pyfiglet.print_figlet("Max links (Number): ")
+        count = int(input())
     except ValueError:
         print("Don't enter text into number input")
         quit()
     links = parse_links(prompt, count)
+    print(colorama.Fore.MAGENTA)
     for link in links:
         print(link)
         for x in range(50):
