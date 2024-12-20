@@ -19,10 +19,13 @@ def parse_links(prompt: str, count: int) -> list:
     # Converting
     for i, letter in enumerate(prompt):
         if letter == " ":
-            prompt[i] = "%20"
+            prompt[i] = "+"
     
     prompt = convert_to_str(prompt)
     
+    print(colorama.Fore.BLACK)
+    print(f"Searching: {prompt}")
+
     # Main Link
     link = f"https://google.com/search?q={prompt}"
     
@@ -47,14 +50,15 @@ def parse_links(prompt: str, count: int) -> list:
     return links
 
 if __name__ == "__main__":
+    font = "big_money-se"
     print(colorama.Fore.LIGHTYELLOW_EX)
-    pyfiglet.print_figlet("CONSOLE BROWSING")
+    pyfiglet.print_figlet("CONSOLE BROWSING", font)
     print(colorama.Fore.LIGHTCYAN_EX)
-    pyfiglet.print_figlet("Prompt: ")
+    pyfiglet.print_figlet("Prompt: ", font)
     prompt = input()
     try:
         print(colorama.Fore.RED)
-        pyfiglet.print_figlet("Max links (Number): ")
+        pyfiglet.print_figlet("Max links (Number): ", font)
         count = int(input())
     except ValueError:
         print("Don't enter text into number input")
